@@ -17,7 +17,7 @@ public class WelcomeToHospital {
 	}
 
 	public boolean validateID(int id) {
-		if(id>0&& id<11) 
+		if(id>0 && id<11) 
 			return true;
 		return false;
 	}

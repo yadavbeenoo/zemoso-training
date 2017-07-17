@@ -4,9 +4,9 @@ import java.text.DecimalFormat;
 
 public class Person implements Observer {
 
-	private double valueUSD=65;
-	private double valueGBP=80;
-	private double valueEURO=69;
+	private double valueUSD;
+	private double valueGBP;
+	private double valueEURO;
 	@SuppressWarnings("unused")
 	private Subject converter;
 	private double ammountinINR;
@@ -22,6 +22,7 @@ public class Person implements Observer {
 		System.out.println("new person "+this.personID+" created having amoount="+inr+"\n");
 		
 		converter.addPerson(this);
+		
 	}
 	
 	

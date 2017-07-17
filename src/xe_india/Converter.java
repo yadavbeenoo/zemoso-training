@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Converter implements Subject {
 	
 	private ArrayList<Observer> observers;
-	private double valueUSD=65;
-	private double valueGBP=80;
-	private double valueEURO=69;
+	private double valueUSD;
+	private double valueGBP;
+	private double valueEURO;
 	
 	public Converter(){
 		observers=new ArrayList<Observer>();
@@ -16,6 +16,7 @@ public class Converter implements Subject {
 	@Override
 	public void addPerson(Observer newPerson) {
 		observers.add(newPerson);
+		notifyPerson();
 	}
 
 	@Override
@@ -32,24 +33,26 @@ public class Converter implements Subject {
 		for(Observer person: observers){
 			person.update(valueUSD,valueEURO,valueGBP);
 		}
-		System.out.println("current conversion rate with INR \nUSD = " + this.valueUSD + "\nEURO = " +
+		
+		if(!observers.isEmpty())
+			System.out.println("current conversion rate with INR \nUSD = " + this.valueUSD + "\nEURO = " +
                 this.valueEURO + "\nGBP = " + this.valueGBP + "\n");
 	}
 	
 	public void setUSD(double usd){
-		System.out.println("recent change in USD\n");
+		System.out.println("value of USD is set\n");
 		valueUSD=usd;
 		notifyPerson();
 	}
 	
 	public void setEURO(double euro){
-		System.out.println("recent change in EURO\n");
+		System.out.println("value of EURO is set\n");
 		valueEURO=euro;
 		notifyPerson();
 	}
 	
 	public void setGBP(double gbp){
-		System.out.println("recent change in GBP\n");
+		System.out.println("value of GBP is set\n");
 		valueGBP=gbp;
 		notifyPerson();
 	}
